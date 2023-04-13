@@ -1,5 +1,5 @@
 {
-  "name": "svelte-actions",
+  "name": "svelte-transition-action",
   "version": "0.0.1",
   "type": "module",
   "types": "dist/index.d.ts",
