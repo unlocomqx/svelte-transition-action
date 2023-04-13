@@ -1,25 +1,33 @@
-import { fade, type TransitionConfig } from "svelte/transition"
+import type { TransitionConfig } from "svelte/transition"
+import { create_bidirectional_transition, group_outros } from "svelte/internal"
 
-type TransitionFN = (node: HTMLElement, Params: Record<string, any>) => TransitionConfig
+declare type TransitionOptions = {
+  direction: "in" | "out" | "both";
+};
+declare type TransitionFn = (node: Element, params: any, options: TransitionOptions) => TransitionConfig;
 
-export type TransitionParams<FN extends TransitionFN> = {
+export type TransitionParams<FN extends TransitionFn> = {
   fn: FN
   key: boolean
 } & Parameters<FN>[1]
 
-export function transition<FN extends TransitionFN>(node: HTMLElement, params?: TransitionParams<FN>) {
-  console.log(node, params)
+export function transition<FN extends TransitionFn>(node: HTMLElement, params: TransitionParams<FN>) {
 
-  const callback = fade(node)
+  group_outros()
+  const transition = create_bidirectional_transition(node, params.fn, params, params.key)
 
-  console.log(callback)
+  function handleTransition(key: boolean) {
+    transition.run(key ? 1 : 0)
+  }
+
+  handleTransition(params.key)
 
   return {
     update(newParams: TransitionParams<FN>) {
-      console.log(newParams.key)
+      handleTransition(newParams.key)
     },
     destroy() {
-      console.log('destroy')
+      console.log("destroy")
     }
   }
 }
