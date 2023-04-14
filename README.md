@@ -1,15 +1,15 @@
-# svelte-transition-actions
+# svelte-transition-action
 
-[![npm version](https://badge.fury.io/js/svelte-transition-actions.svg)](https://badge.fury.io/js/svelte-transition-actions)
+[![npm version](https://badge.fury.io/js/svelte-transition-action.svg)](https://badge.fury.io/js/svelte-transition-action)
 
 A svelte action that allows you to use any svelte transition as an action without re-rendering the element.
 
 ## Installation
 
 ```bash
-npm install svelte-transition-actions
+npm install svelte-transition-action
 # or
-yarn add svelte-transition-actions
+yarn add svelte-transition-action
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ yarn add svelte-transition-actions
 ```svelte
 <script>
     import { fade } from 'svelte/transition';
-    import { transition } from 'svelte-transition-actions';
+    import { transition } from 'svelte-transition-action';
   
     let displayed = true;
 </script>
@@ -38,7 +38,7 @@ that [the transition function accepts](https://svelte.dev/docs#template-syntax-e
 <script>
     import { slide } from 'svelte/transition';
     import { quintOut } from 'svelte/easing';
-    import { transition } from 'svelte-transition-actions';
+    import { transition } from 'svelte-transition-action';
   
     let displayed = true;
 </script>

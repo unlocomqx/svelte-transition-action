@@ -7,7 +7,7 @@
     "build": "tsc",
     "preversion": "npm run build",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
-    "prepublishOnly": "git push && git push --tags && gh-release",
+    "prepublishOnly": "git push && git push --tags",
     "format": "prettier --write src/**/*.ts",
     "check": "tsc --noEmit"
   },
@@ -22,12 +22,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unlocomqx/svelte-transition-actions.git"
+    "url": "git+https://github.com/unlocomqx/svelte-transition-action.git"
   },
   "bugs": {
-    "url": "https://github.com/unlocomqx/svelte-transition-actions/issues"
+    "url": "https://github.com/unlocomqx/svelte-transition-action/issues"
   },
-  "homepage": "https://github.com/unlocomqx/svelte-transition-actions#readme",
+  "homepage": "https://github.com/unlocomqx/svelte-transition-action#readme",
   "description": "",
   "devDependencies": {
     "auto-changelog": "^2.2.1",
