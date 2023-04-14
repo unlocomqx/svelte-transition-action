@@ -1,58 +1,55 @@
-# create-svelte
+# svelte-transition-action
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+[![npm version](https://badge.fury.io/js/svelte-transition-action.svg)](https://badge.fury.io/js/svelte-transition-action)
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
+A svelte action that allows you to use any svelte transition as an action without re-rendering the element.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+## Installation
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install svelte-transition-action
+# or
+yarn add svelte-transition-action
 ```
 
-## Developing
+## Usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```svelte
+<script>
+    import { fade } from 'svelte/transition';
+    import { transition } from 'svelte-transition-action';
+  
+    let displayed = true;
+</script>
 
-```bash
-npm run dev
+<button on:click={() => displayed = !displayed}>Toggle</button>
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+<h1 use:transition={{ fn: fade, key: displayed, duration: 1000 }}>
+    Fade in and out
+</h1>
+``` 
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+You can pass any arguments
+that [the transition function accepts](https://svelte.dev/docs#template-syntax-element-directives-transition-fn).
 
-## Building
+## More examples
 
-To build your library:
+```svelte
+<script>
+    import { slide } from 'svelte/transition';
+    import { quintOut } from 'svelte/easing';
+    import { transition } from 'svelte-transition-action';
+  
+    let displayed = true;
+</script>
 
-```bash
-npm run package
-```
+<button on:click={() => displayed = !displayed}>Toggle</button>
 
-To create a production version of your showcase app:
+<div use:transition="{{fn: slide, delay: 250, duration: 300, easing: quintOut, axis: 'x'}}">
+    slides in and out horizontally
+</div>
+``` 
 
-```bash
-npm run build
-```
+### Heads up
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```bash
-npm publish
-```
+Not very well tested. Consider it alpha.
