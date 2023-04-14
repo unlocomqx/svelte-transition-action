@@ -42,13 +42,19 @@ that [the transition function accepts](https://svelte.dev/docs#template-syntax-e
 	import { quintOut } from 'svelte/easing';
 	import { transition } from 'svelte-transition-action';
 
-	let displayed = true;
+	let displayed = false;
 </script>
 
 <button on:click={() => displayed = !displayed}>Toggle</button>
 
-<h1 use:transition="{{fn: slide, key: displayed, delay: 250, duration: 1000, easing: quintOut}}">
-	slides in and out with delay
+<h1 use:transition="{{
+		fn: slide,
+		key: displayed,
+		delay: 250,
+		duration: 1000,
+		easing: quintOut
+}}">
+	Slide in and out with delay
 </h1>
 ``` 
 
