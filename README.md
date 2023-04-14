@@ -27,7 +27,9 @@ yarn add svelte-transition-action
 <h1 use:transition={{ fn: fade, key: displayed, duration: 1000 }}>
     Fade in and out
 </h1>
-``` 
+```
+
+[REPL](https://svelte.dev/repl/94016945d3af465c8ffab47854b5771d?version=3.58.0)
 
 You can pass any arguments
 that [the transition function accepts](https://svelte.dev/docs#template-syntax-element-directives-transition-fn).
@@ -36,19 +38,21 @@ that [the transition function accepts](https://svelte.dev/docs#template-syntax-e
 
 ```svelte
 <script>
-    import { slide } from 'svelte/transition';
-    import { quintOut } from 'svelte/easing';
-    import { transition } from 'svelte-transition-action';
-  
-    let displayed = true;
+	import { slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+	import { transition } from 'svelte-transition-action';
+
+	let displayed = true;
 </script>
 
 <button on:click={() => displayed = !displayed}>Toggle</button>
 
-<div use:transition="{{fn: slide, delay: 250, duration: 300, easing: quintOut, axis: 'x'}}">
-    slides in and out horizontally
-</div>
+<h1 use:transition="{{fn: slide, key: displayed, delay: 250, duration: 1000, easing: quintOut}}">
+	slides in and out with delay
+</h1>
 ``` 
+
+[REPL](https://svelte.dev/repl/c3ace6cb2b3d44618f7ba968f4ecedee?version=3.58.0)
 
 ### Heads up
 

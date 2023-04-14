@@ -1,5 +1,6 @@
 <script>
-	import { fade } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	import { transition } from '$lib';
 
 	let displayed = true;
@@ -7,6 +8,6 @@
 
 <button on:click={() => displayed = !displayed}>Toggle</button>
 
-<h1 use:transition={{ fn: fade, key: displayed, duration: 1000 }}>
-	Fade in and out
-</h1>
+<div use:transition="{{fn: slide, key: displayed, delay: 250, duration: 300, easing: quintOut}}">
+	slides in and out horizontally
+</div>
