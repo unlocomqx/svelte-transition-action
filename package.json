@@ -12,7 +12,9 @@
     "check": "tsc --noEmit"
   },
   "keywords": [
-    "svelte"
+    "svelte",
+    "transition",
+    "action"
   ],
   "files": [
     "src",
