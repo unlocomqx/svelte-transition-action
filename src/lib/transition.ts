@@ -14,7 +14,7 @@ export type TransitionParams<FN extends TransitionFn> = {
 export function transition<FN extends TransitionFn>(node: HTMLElement, params: TransitionParams<FN>) {
 
   group_outros()
-  const transition = create_bidirectional_transition(node, params.fn, params, params.key)
+  let transition = create_bidirectional_transition(node, params.fn, params, params.key)
 
   function handleTransition(key: boolean) {
     transition.run(key ? 1 : 0)
@@ -27,7 +27,8 @@ export function transition<FN extends TransitionFn>(node: HTMLElement, params: T
       handleTransition(newParams.key)
     },
     destroy() {
-      console.log("destroy")
+      // @ts-ignore
+      transition = undefined
     }
   }
 }
