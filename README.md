@@ -47,13 +47,13 @@ that [the transition function accepts](https://svelte.dev/docs#template-syntax-e
 
 <button on:click={() => displayed = !displayed}>Toggle</button>
 
-<h1 use:transition="{{
+<h1 use:transition={{
 		fn: slide,
 		key: displayed,
 		delay: 250,
 		duration: 1000,
 		easing: quintOut
-}}">
+}}>
 	Slide in and out with delay
 </h1>
 ``` 
